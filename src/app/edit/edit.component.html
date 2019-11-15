@@ -1,0 +1,37 @@
+<div class="container" style="width: 50%;">
+    <h1 class="text-center">Edit Student</h1>
+    <form [formGroup]= "addForm" novalidate class="form">
+        
+      <input type="hidden" formControlName="sId" name="sId" >
+        <div class="form-group">
+                <label for="fname">First Name</label>
+                <input type="text" formControlName="fname" placeholder="First Name" name="fname" class="form-control">
+            </div>
+            <div class="alert alert-danger" *ngIf= "addForm.get('fname').hasError('required') && addForm.get('fname').touched">
+                Please Enter First name
+              </div>
+            <div class="form-group">
+                    <label for="lname">Last Name</label>
+                    <input type="text" formControlName="lname" placeholder="Last Name" name="lname" class="form-control">
+                </div>
+                <div class="alert alert-danger" *ngIf= "addForm.get('lname').hasError('maxlength') && addForm.get('lname').touched">
+                    only 12 charectors
+                     </div>
+                <div class="alert alert-danger" *ngIf= "addForm.get('lname').hasError('required') && addForm.get('lname').touched">
+                  Please Enter last name
+                </div>
+               
+                <div class="form-group">
+                        <label for="email">Student Email</label>
+                        <input type="email" formControlName="email" placeholder="Student Email" name="email" class="form-control">
+                    </div>
+                    <div class="alert alert-danger" *ngIf= "addForm.get('email').hasError('required') && addForm.get('email').touched">
+                        Please Enter E-mail
+                      </div>
+
+                    <button class="btn btn-success" (click)="update()">Save</button>
+                    <a routerLink="/view" class="btn btn-primary" style="float: right;">View student</a>
+    </form>
+
+</div>
+
